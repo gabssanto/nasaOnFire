@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, Dimensions, TouchableOpacity } from 'react-nati
 import Constants from 'expo-constants';
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
+import ButtonArea from '../ButtonArea';
 
 export default class Map extends React.Component {
 	state = {
@@ -101,6 +102,5 @@ const styles = StyleSheet.create({
 	centerButton: {
 		padding: 30,
 		maxHeight: 100,
-
 	}
 });
