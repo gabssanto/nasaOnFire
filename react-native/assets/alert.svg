@@ -1,0 +1,18 @@
+<svg id="Alert" xmlns="http://www.w3.org/2000/svg" width="116" height="60" viewBox="0 0 116 60">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: rgba(255,255,255,0.9);
+      }
+
+      .cls-2 {
+        fill: #d12b2b;
+      }
+    </style>
+  </defs>
+  <rect id="Retângulo_11" data-name="Retângulo 11" class="cls-1" width="116" height="60" rx="30"/>
+  <g id="Grupo_10" data-name="Grupo 10" transform="translate(-277 -27)">
+    <path id="exclamation-solid" class="cls-2" d="M17.488,2.446l3.647,26.406c.062,1.24.632,2.214,1.873,2.214h2.724c1.242,0,1.78-.974,1.842-2.214L31.223,2.446C31.29,1.115,31.728.066,28.9,0H19.815C17.1-.041,17.422,1.115,17.488,2.446Z" transform="translate(294 35)"/>
+    <circle id="Elipse_2" data-name="Elipse 2" class="cls-2" cx="5.5" cy="5.5" r="5.5" transform="translate(313 69)"/>
+  </g>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="116" height="32" viewBox="0 0 116 32">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #f4aa03;
+        font-size: 27px;
+        font-family: HelveticaNeue-Bold, Helvetica Neue;
+        font-weight: 700;
+      }
+
+      .cls-2 {
+        font-family: HelveticaNeue, Helvetica Neue;
+        font-weight: 400;
+      }
+    </style>
+  </defs>
+  <text id="firewatch" class="cls-1" transform="translate(58 26)"><tspan x="-57.497" y="0">fire</tspan><tspan class="cls-2" y="0">watch</tspan></text>
+</svg>
