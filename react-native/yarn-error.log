@@ -1,30 +1,23 @@
 Arguments: 
-  /Users/salanho/.nvm/versions/node/v10.15.3/bin/node /usr/local/Cellar/yarn/1.17.3/libexec/bin/yarn.js add react-navigation-switch
+  /home/joao/.nvm/versions/node/v12.12.0/bin/node /usr/share/yarn/bin/yarn.js add react-native-gesture-handler@~1.3.0
 
 PATH: 
-  /Users/salanho/.nvm/versions/node/v10.15.3/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Library/Apple/bin:/Applications/Wireshark.app/Contents/MacOS:/Users/salanho/.nvm/versions/node/v10.15.3/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin
+  /home/joao/.nvm/versions/node/v12.12.0/bin:/home/joao/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
 
 Yarn version: 
-  1.17.3
+  1.19.1
 
 Node version: 
-  10.15.3
+  12.12.0
 
 Platform: 
-  darwin x64
+  linux x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/react-navigation-switch: Not found
-      at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.17.3/libexec/lib/cli.js:66830:18)
-      at Request.self.callback (/usr/local/Cellar/yarn/1.17.3/libexec/lib/cli.js:140464:22)
-      at Request.emit (events.js:189:13)
-      at Request.<anonymous> (/usr/local/Cellar/yarn/1.17.3/libexec/lib/cli.js:141436:10)
-      at Request.emit (events.js:189:13)
-      at IncomingMessage.<anonymous> (/usr/local/Cellar/yarn/1.17.3/libexec/lib/cli.js:141358:12)
-      at Object.onceWrapper (events.js:277:13)
-      at IncomingMessage.emit (events.js:194:15)
-      at endReadableNT (_stream_readable.js:1125:12)
-      at process._tickCallback (internal/process/next_tick.js:63:19)
+  Error: https://registry.yarnpkg.com/react-native-gesture-handler: ETIMEDOUT
+      at Timeout._onTimeout (/usr/share/yarn/lib/cli.js:141224:19)
+      at listOnTimeout (internal/timers.js:531:17)
+      at processTimers (internal/timers.js:475:7)
 
 npm manifest: 
   {
@@ -44,9 +37,10 @@ npm manifest:
       "react": "16.8.3",
       "react-dom": "16.8.3",
       "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
-      "react-native-gesture-handler": "~1.3.0",
+      "react-native-gesture": "^0.2.0",
+      "react-native-gesture-handler": "^1.4.1",
       "react-native-maps": "~0.25.0",
-      "react-native-reanimated": "~1.2.0",
+      "react-native-reanimated": "^1.3.0",
       "react-native-web": "^0.11.7",
       "react-navigation": "^4.0.10",
       "react-navigation-stack": "^1.9.4",
@@ -1827,6 +1821,11 @@ Lockfile:
       css-color-keywords "^1.0.0"
       postcss-value-parser "^3.3.0"
   
+  curry@^1.2.0:
+    version "1.2.0"
+    resolved "https://registry.yarnpkg.com/curry/-/curry-1.2.0.tgz#9e6dd289548dba7e653d5ae3fe903fe7dfb33af2"
+    integrity sha1-nm3SiVSNun5lPVrj/pA/59+zOvI=
+  
   debounce@^1.2.0:
     version "1.2.0"
     resolved "https://registry.yarnpkg.com/debounce/-/debounce-1.2.0.tgz#44a540abc0ea9943018dc0eaa95cce87f65cd131"
@@ -2569,6 +2568,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/growly/-/growly-1.3.0.tgz#f10748cbe76af964b7c96c93c6bcc28af120c081"
     integrity sha1-8QdIy+dq+WS3yWyTxrzCivEgwIE=
   
+  hammerjs@^2.0.8:
+    version "2.0.8"
+    resolved "https://registry.yarnpkg.com/hammerjs/-/hammerjs-2.0.8.tgz#04ef77862cff2bb79d30f7692095930222bf60f1"
+    integrity sha1-BO93hiz/K7edMPdpIJWTAiK/YPE=
+  
   has-ansi@^2.0.0:
     version "2.0.0"
     resolved "https://registry.yarnpkg.com/has-ansi/-/has-ansi-2.0.0.tgz#34f5049ce1ecdf2b0649af3ef24e45ed35416d91"
@@ -2678,6 +2682,11 @@ Lockfile:
     version "3.2.3"
     resolved "https://registry.yarnpkg.com/immediate/-/immediate-3.2.3.tgz#d140fa8f614659bd6541233097ddaac25cdd991c"
     integrity sha1-0UD6j2FGWb1lQSMwl92qwlzdmRw=
+  
+  immutable@^3.7.5:
+    version "3.8.2"
+    resolved "https://registry.yarnpkg.com/immutable/-/immutable-3.8.2.tgz#c2439951455bb39913daf281376f1530e104adf3"
+    integrity sha1-wkOZUUVbs5kT2vKBN28VMOEErfM=
   
   import-fresh@^2.0.0:
     version "2.0.0"
@@ -4267,7 +4276,7 @@ Lockfile:
     dependencies:
       asap "~2.0.3"
   
-  prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
+  prop-types@^15.5.4, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
     version "15.7.2"
     resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
     integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -4307,6 +4316,11 @@ Lockfile:
     version "2.1.1"
     resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-2.1.1.tgz#60e5a5fd64a7f8bfa4d2ab2ed6fdf4c85bad154e"
     integrity sha512-w7fLxIRCRT7U8Qu53jQnJyPkYZIaR4n5151KMfcJlO/A9397Wxb1amJvROTK6TOnp7PfoAmg/qXiNHI+08jRfA==
+  
+  ramda@^0.19.1:
+    version "0.19.1"
+    resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.19.1.tgz#89c4ad697265ff6b1face9f286439e2520d6679c"
+    integrity sha1-icStaXJl/2sfrOnyhkOeJSDWZ5w=
   
   randomatic@^3.0.0:
     version "3.1.1"
@@ -4370,24 +4384,36 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/react-native-branch/-/react-native-branch-3.0.1.tgz#5b07b61cbd290168cd3c3662e017ebe0f356d2ca"
     integrity sha512-vbcYxPZlpF5f39GAEUF8kuGQqCNeD3E6zEdvtOq8oCGZunHXlWlKgAS6dgBKCvsHvXgHuMtpvs39VgOp8DaKig==
   
-  react-native-gesture-handler@~1.3.0:
-    version "1.3.0"
-    resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.3.0.tgz#d0386f565928ccc1849537f03f2e37fd5f6ad43f"
-    integrity sha512-ASRFIXBuKRvqlmwkWJhV8yP2dTpvcqVrLNpd7FKVBFHYWr6SAxjGyO9Ik8w1lAxDhMlRP2IcJ9p9eq5X2WWeLQ==
+  react-native-gesture-handler@^1.4.1:
+    version "1.4.1"
+    resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.4.1.tgz#c38d9e57637b95e221722a79f2bafac62e3aeb21"
+    integrity sha512-Ffcs+SbEbkGaal0CClYL+v7A9y4OA5G5lW01qrzjxaqASp5C8BfnWSKuqYKE00s6bLwE5L4xnlHkG0yIxAtbrQ==
     dependencies:
+      hammerjs "^2.0.8"
       hoist-non-react-statics "^2.3.1"
-      invariant "^2.2.2"
-      prop-types "^15.5.10"
+      invariant "^2.2.4"
+      prop-types "^15.7.2"
+  
+  react-native-gesture@^0.2.0:
+    version "0.2.0"
+    resolved "https://registry.yarnpkg.com/react-native-gesture/-/react-native-gesture-0.2.0.tgz#8c51c7b1929c3ea106bcd5fc14e89f14c0dba293"
+    integrity sha1-jFHHsZKcPqEGvNX8FOifFMDbopM=
+    dependencies:
+      curry "^1.2.0"
+      immutable "^3.7.5"
+      ramda "^0.19.1"
+      rx "^4.0.6"
+      transducers.js "^0.3.2"
   
   react-native-maps@~0.25.0:
     version "0.25.0"
     resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-0.25.0.tgz#81bc51eb50e33811a9e1c345cc48869413ead67d"
     integrity sha512-PFJuW1pt+HnnnN0m0OGk29RSvICFVkK/DScX6cUk0SuCSN2DAHx0y6y57lZyYXcYqU4J4usNpfxgp/ccjASDiw==
   
-  react-native-reanimated@~1.2.0:
-    version "1.2.0"
-    resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.2.0.tgz#9219227a52a5dfa4d34c324596d6726ccd874293"
-    integrity sha512-vkWRHrPK5qfHP/ZawlRoo38oeYe9NZaaOH/lmFxRcsKzaSK6x3H5ZPXI8lK6MfTLveqwo1QhJje3zIKXO4nQQw==
+  react-native-reanimated@^1.3.0:
+    version "1.3.0"
+    resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.3.0.tgz#581cdb0bd1ff05e7304b116af712ded0c7665ede"
+    integrity sha512-KFno6D0q09kx71IDuPa4qeC1t1msALsCMuli3/EN3YDf8XoM2CG53yzhVHMFtmcW0IUCySugHgxQiuT5BzwOPA==
   
   react-native-safe-area-view@^0.14.1:
     version "0.14.8"
@@ -4723,6 +4749,11 @@ Lockfile:
     version "4.0.8"
     resolved "https://registry.yarnpkg.com/rx-lite/-/rx-lite-4.0.8.tgz#0b1e11af8bc44836f04a6407e92da42467b79444"
     integrity sha1-Cx4Rr4vESDbwSmQH6S2kJGe3lEQ=
+  
+  rx@^4.0.6:
+    version "4.1.0"
+    resolved "https://registry.yarnpkg.com/rx/-/rx-4.1.0.tgz#a5f13ff79ef3b740fe30aa803fb09f98805d4782"
+    integrity sha1-pfE/957zt0D+MKqAP7CfmIBdR4I=
   
   safe-buffer@5.1.2, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
     version "5.1.2"
@@ -5237,6 +5268,11 @@ Lockfile:
     version "1.0.0"
     resolved "https://registry.yarnpkg.com/toidentifier/-/toidentifier-1.0.0.tgz#7e1be3470f1e77948bc43d94a3c8f4d7752ba553"
     integrity sha512-yaOH/Pk/VEhBWWTlhI+qXxDFXlejDGcQipMlyxda9nthulaxLZUNcUqFxokp0vcYnvteJln5FNQDRrxj3YcbVw==
+  
+  transducers.js@^0.3.2:
+    version "0.3.2"
+    resolved "https://registry.yarnpkg.com/transducers.js/-/transducers.js-0.3.2.tgz#78902ef755e0606cd2fdd1633912f1093c8a5432"
+    integrity sha1-eJAu91XgYGzS/dFjORLxCTyKVDI=
   
   typedarray@^0.0.6:
     version "0.0.6"

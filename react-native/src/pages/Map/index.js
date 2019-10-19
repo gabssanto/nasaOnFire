@@ -5,7 +5,9 @@ import Constants from 'expo-constants';
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 import ButtonArea from '../ButtonArea';
-import { CenterButton } from "./styles";
+import { CenterButton, ButtonCloseReport, ViewReport } from "./styles";
+
+import SlideToConfirm from 'react-native-slide-to-confirm';
 
 export default class Map extends React.Component {
 	state = {
@@ -14,11 +16,14 @@ export default class Map extends React.Component {
 		fireMarkers: [],
 		fireManMarkers: [],
 		errorMessage: null,
-		centerButtonVisibility: true
+		centerButtonVisibility: true,
+		hasToInsertFire: false,
+		reportVisibility: false,
+		buttonAreaVisibility: true
 	}
 
 	componentWillMount() {
-        this._getLocationAsync();
+		this._getLocationAsync();
     }
 
 	_getLocationAsync = async () => {
@@ -26,7 +31,8 @@ export default class Map extends React.Component {
 		if (status !== 'granted') {
 			this.setState({
 				errorMessage: 'É necessária a permissão de localização'
-			})
+			});
+			return;
 		}
 		const { fireMarkers } = this.state;
 
@@ -51,8 +57,31 @@ export default class Map extends React.Component {
 		});
 	}
 
+	insertFire = () => 	{
+		console.log("inserindo fogo");
+		const { fireMarkers, showLocation } = this.state;
+		this.setState({
+			hasToInsertFire: false,
+			fireMarkers: [...fireMarkers, showLocation]
+		});
+	}
+
+	toggleReport = () => {
+		if(this.state.buttonAreaVisibility){
+			this.setState({
+				buttonAreaVisibility: false,
+				reportVisibility: true
+			});
+		} else {
+			this.setState({
+				buttonAreaVisibility: true,
+				reportVisibility: false,
+			})
+		}
+	}
+
 	render() {
-		const { myLocation, fireMarkers, errorMessage, centerButtonVisibility, showLocation } = this.state;
+		const { myLocation, fireMarkers, errorMessage, centerButtonVisibility, showLocation, reportVisibility, buttonAreaVisibility } = this.state;
 
 		if (errorMessage) {
 			return (
@@ -74,28 +103,55 @@ export default class Map extends React.Component {
 							<Marker
 								key={0}
 								coordinate={myLocation}
+								image={require("../../../assets/MyLocation.png")}
 							/>
 						}
 						{fireMarkers.map((marker, index) => (
 							<Marker
 								key={index + 1}
 								coordinate={marker}
+								image={require("../../../assets/fireInMap.png")}
 							/>
 						))}
 					</MapView>
 					
 					{centerButtonVisibility ? 
-					<CenterButton>
-						<TouchableOpacity onPress={ this._centerMap }>
-							<Image source={require('../../../assets/relocation.png')}/>
-						</TouchableOpacity>
-					</CenterButton>
-					: null
-					}
-				
-						
+						<CenterButton>
+							<TouchableOpacity onPress={ this._centerMap }>
+								<Image source={require('../../../assets/relocation.png')}/>
+							</TouchableOpacity>
+						</CenterButton>
+						: null
+					}	
 					
-					<ButtonArea subprops={this.props} substate={this.state}></ButtonArea>
+					{buttonAreaVisibility ?
+						<ButtonArea subprops={this.props} centerMap={this._centerMap} toggleReport={this.toggleReport}></ButtonArea>
+						:null
+					}
+
+					{reportVisibility ? 
+						<ViewReport
+						// Report Screen
+						>
+						<SlideToConfirm
+							ref={ref => this.slideRef = ref}
+							width={347}
+							onConfirm={()=>{
+								this.insertFire();
+								this.toggleReport();
+							}}
+							textColor='white'
+							pathCoverColor='#00c10f'
+							pathColor='#d02929'
+							sliderColor='white'
+							text='Deslize para confirmar'
+							/>
+							<ButtonCloseReport onPress={ () => { this.toggleReport() } }>
+								<Image source={require("../../../assets/close.png")} />
+							</ButtonCloseReport>
+						</ViewReport>
+						: null 
+					}
 				</View>
 			);
 		}

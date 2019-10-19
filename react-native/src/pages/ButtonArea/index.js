@@ -4,41 +4,33 @@ import { Text, TouchableOpacity, Image } from 'react-native';
 import { Container, Logo, ButtonLeft, ButtonRight } from './styles';
 
 export default class ButtonArea extends Component {
-    state = {
-        count: null,
-        mapProps: null,
-        mapState: null,
-        visible: true
+    constructor() {
+        super();
+        this.state = {
+            count: null,
+            mapProps: null,
+            visible: true
+        };
     }
 
     componentWillMount() {
-        this.setState({ mapProps: this.props.subprops, mapState: this.props.substate })
+        this.setState({ mapProps: this.props.subprops })
     }
 
     Report = () => {
-        const { navigation } = this.props.subprops;
-        navigation.navigate('Report', {
-            onGoBack: this.changeVisibility
-        });        
-        this.setState({
-            visible: false
-        });
-    }    
+        this.props.toggleReport();
+    }
 
     Feed = () => {
         const { navigation } = this.props.subprops;
-        navigation.navigate('Feed', {
-            onGoBack: this.changeVisibility
-        });
-        this.setState({
-            visible: false,
-            mapState: {
-                centerButtonVisibility: false
-            }
-        });
+        navigation.navigate('Feed');
     }
 
-    changeVisibility = () => {
+    _hasSelectedPosition(){
+        this.changeVisibility();
+    }
+
+    changeVisibility(){
         this.setState({
             visible: true
         })

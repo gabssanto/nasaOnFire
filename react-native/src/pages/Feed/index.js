@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import { Text, TouchableOpacity, Image, BackHandler } from 'react-native';
-import { Container } from './styles';
+import { Card, ListItem, Icon } from 'react-native-elements';
 
-import FeedElement from "../FeedElement";
+import { Container, Button, View, ButtonClose } from './styles';
 
 export default class Feed extends Component {
-
+    
     render() {
-    return (
-        <Container>
-            <FeedElement></FeedElement>
-        </Container>
-    )
+        return (
+            <Container>
+                <Card title="Teste">
+                    <Text>ola</Text>
+                </Card>
+            </Container>
+        )
     }
 };
