@@ -80,6 +80,7 @@ export default class Map extends React.Component {
 							<Text>sadyuhuj</Text>
 						</TouchableOpacity>
 					</View>
+					<ButtonArea></ButtonArea>
 				</View>
 			);
 		}
