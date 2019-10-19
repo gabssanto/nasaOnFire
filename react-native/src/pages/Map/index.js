@@ -15,8 +15,9 @@ export default class Map extends React.Component {
 	}
 
 	componentWillMount() {
-		this._getLocationAsync();
-	}
+        this._getLocationAsync();
+        //console.log(this.props.navigation);
+    }
 
 	_getLocationAsync = async () => {
 		let { status } = await Permissions.askAsync(Permissions.LOCATION);
@@ -61,7 +62,7 @@ export default class Map extends React.Component {
 					// onRegionChange={ region => this.setState({myLocation: region}) } mudar p/ caso mude, aparecer botao de centering
 					// onRegionChangeComplete={ region => this.setState({myLocation: region}) }
 					>
-						{myLocation == null ? null :
+                        {myLocation == null ? null :
 							<Marker
 								key={0}
 								coordinate={myLocation}
@@ -80,7 +81,7 @@ export default class Map extends React.Component {
 							<Text>sadyuhuj</Text>
 						</TouchableOpacity>
 					</View>
-					<ButtonArea></ButtonArea>
+					<ButtonArea subprops={this.props}></ButtonArea>
 				</View>
 			);
 		}

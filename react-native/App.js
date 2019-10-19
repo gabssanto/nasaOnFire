@@ -2,13 +2,14 @@ import React from 'react';
 import MapView, { Marker } from 'react-native-maps';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import Map from "./src/pages/Map/index";
+import Routes from './src/routes';
 
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Map></Map>
-      </View>
+      
+        <Routes></Routes>
+      
     );
   }
 }
