@@ -17,26 +17,9 @@ export default class ButtonArea extends Component {
         this.setState({ mapProps: this.props.subprops })
     }
 
-    componentWillUnmount() {
-        return this.props.hasToInsertFire();
-    }
-
     Report = () => {
-        const { navigation } = this.props.subprops;
-        navigation.navigate('Report', {
-            //onGoBack: hasSelectedPosition => { hasSelectedPosition ? _hasSelectedPosition : this.changeVisibility }
-            onGoBack: hasSelectedPosition => {
-                if(hasSelectedPosition) {
-                    this._hasSelectedPosition();
-                } else {
-                    this.changeVisibility();
-                }
-            }
-        });        
-        this.setState({
-            visible: false
-        });
-    }    
+        this.props.toggleReport();
+    }
 
     Feed = () => {
         const { navigation } = this.props.subprops;
@@ -50,12 +33,6 @@ export default class ButtonArea extends Component {
 
     _hasSelectedPosition(){
         this.changeVisibility();
-        /*this.setState({
-            mapState: {
-                hasToInsertFire: true
-            }
-        });*/
-        this.props.hasToInsertFire()
     }
 
     changeVisibility(){

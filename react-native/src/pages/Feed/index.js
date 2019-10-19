@@ -10,10 +10,10 @@ export default class Feed extends Component {
     }
     
     render() {
-    return (
-        <View>
-        <Text>Pagina de Feed</Text>
-        </View>
-    )
+        return (
+            <View>
+            <Text>Pagina de Feed</Text>
+            </View>
+        )
     }
 };

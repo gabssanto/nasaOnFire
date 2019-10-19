@@ -5,7 +5,9 @@ import Constants from 'expo-constants';
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 import ButtonArea from '../ButtonArea';
-import { CenterButton } from "./styles";
+import { CenterButton, ButtonCloseReport, ViewReport } from "./styles";
+
+import SlideToConfirm from 'react-native-slide-to-confirm';
 
 export default class Map extends React.Component {
 	state = {
@@ -15,7 +17,9 @@ export default class Map extends React.Component {
 		fireManMarkers: [],
 		errorMessage: null,
 		centerButtonVisibility: true,
-		hasToInsertFire: false
+		hasToInsertFire: false,
+		reportVisibility: false,
+		buttonAreaVisibility: true
 	}
 
 	componentWillMount() {
@@ -27,7 +31,8 @@ export default class Map extends React.Component {
 		if (status !== 'granted') {
 			this.setState({
 				errorMessage: 'É necessária a permissão de localização'
-			})
+			});
+			return;
 		}
 		const { fireMarkers } = this.state;
 
@@ -61,8 +66,22 @@ export default class Map extends React.Component {
 		});
 	}
 
+	toggleReport = () => {
+		if(this.state.buttonAreaVisibility){
+			this.setState({
+				buttonAreaVisibility: false,
+				reportVisibility: true
+			});
+		} else {
+			this.setState({
+				buttonAreaVisibility: true,
+				reportVisibility: false,
+			})
+		}
+	}
+
 	render() {
-		const { myLocation, fireMarkers, errorMessage, centerButtonVisibility, showLocation, hasToInsertFire } = this.state;
+		const { myLocation, fireMarkers, errorMessage, centerButtonVisibility, showLocation, reportVisibility, buttonAreaVisibility } = this.state;
 
 		if (errorMessage) {
 			return (
@@ -105,7 +124,34 @@ export default class Map extends React.Component {
 						: null
 					}	
 					
-					<ButtonArea subprops={this.props} hasToInsertFire={this.insertFire}></ButtonArea>
+					{buttonAreaVisibility ?
+						<ButtonArea subprops={this.props} centerMap={this._centerMap} toggleReport={this.toggleReport}></ButtonArea>
+						:null
+					}
+
+					{reportVisibility ? 
+						<ViewReport
+						// Report Screen
+						>
+						<SlideToConfirm
+							ref={ref => this.slideRef = ref}
+							width={347}
+							onConfirm={()=>{
+								this.insertFire();
+								this.toggleReport();
+							}}
+							textColor='white'
+							pathCoverColor='#00c10f'
+							pathColor='#d02929'
+							sliderColor='white'
+							text='Deslize para confirmar'
+							/>
+							<ButtonCloseReport onPress={ () => { this.toggleReport() } }>
+								<Image source={require("../../../assets/close.png")} />
+							</ButtonCloseReport>
+						</ViewReport>
+						: null 
+					}
 				</View>
 			);
 		}

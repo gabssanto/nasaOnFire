@@ -25,12 +25,6 @@ const Routes = createAppContainer(
             ButtonArea: {
                 screen: ButtonArea,
             },
-            Report: {
-                screen: Report,
-                navigationOptions: {
-                    header: null,
-                },
-            },
             Feed: {
                 screen: Feed
             }
