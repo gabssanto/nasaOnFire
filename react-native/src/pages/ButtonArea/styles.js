@@ -12,7 +12,13 @@ export const Container = styled.View`
     min-width: 95%;
 `;
 
-export const Button = styled.TouchableOpacity`
+export const ButtonLeft = styled.TouchableOpacity`
+    text-align: center;
+    justify-content: center;
+    background-color: #333;
+`;
+
+export const ButtonRight = styled.TouchableOpacity`
     text-align: center;
     justify-content: center;
     background-color: #333;

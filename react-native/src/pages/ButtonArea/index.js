@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 
-import { Container, Logo, Button } from './styles';
+import { Container, Logo, ButtonLeft, ButtonRight } from './styles';
 
 export default class ButtonArea extends Component {
     state = {
@@ -18,13 +18,13 @@ export default class ButtonArea extends Component {
     render() {
         return (
             <Container>
-                <Button onPress={this.onPress} >
+                <ButtonLeft onPress={this.onPress} >
                     <Text>aaaaaaa</Text>
-                </Button>
+                </ButtonLeft>
                 <Logo>FireWatch</Logo>
-                <Button onPress={this.onPress} >
+                <ButtonRight onPress={this.onPress} >
                     <Text>aaaaaaa</Text>
-                </Button>
+                </ButtonRight>
             </Container>
         )
     }
