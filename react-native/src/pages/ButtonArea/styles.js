@@ -10,27 +10,26 @@ export const Container = styled.View`
     margin-bottom: 30px;
     border-radius: 69px;
     min-width: 95%;
+    padding-left: 10px;
+    padding-right: 10px;
 `;
 
 export const ButtonLeft = styled.TouchableOpacity`
     text-align: center;
     justify-content: center;
-    background-color: #333;
+    margin-right: auto;
 `;
 
 export const ButtonRight = styled.TouchableOpacity`
     text-align: center;
     justify-content: center;
-    background-color: #333;
+    margin-left: auto;
 `;
 
 export const Logo = styled.Text`
     text-align: center;
     justify-content: center;
     color: #f4aa03;
-    background-color: #eee;
-    margin-top: auto;
-    margin-bottom: auto;
-    top: 0;
-    bottom: 0;
+    margin-top: 5%;
+    
 `;

@@ -1,29 +1,33 @@
 import React, { Component } from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity, Image } from 'react-native';
 
 import { Container, Logo, ButtonLeft, ButtonRight } from './styles';
 
 export default class ButtonArea extends Component {
     state = {
         count: null,
+        mapProps: null
     }
 
-    onPress = () => {
-        const { count } = this.state;
-        this.setState({
-          count: count+1
-        })
+    componentWillMount() {
+        this.setState({ mapProps: this.props.subprops })
+    }
+
+    Report = () => {
+        const { navigation } = this.props.subprops;
+        console.log(this.props.subprops)
+        navigation.navigate('Report');
     }    
 
     render() {
         return (
             <Container>
                 <ButtonLeft onPress={this.onPress} >
-                    <Text>aaaaaaa</Text>
+                    <Image source={require('../../../assets/News.png')}/>
                 </ButtonLeft>
-                <Logo>FireWatch</Logo>
-                <ButtonRight onPress={this.onPress} >
-                    <Text>aaaaaaa</Text>
+                <Logo><Image source={require('../../../assets/firewatch.png')}/> </Logo>
+                <ButtonRight onPress={() => this.Report()} >
+                    <Image source={require('../../../assets/fireReport.png')}/>
                 </ButtonRight>
             </Container>
         )

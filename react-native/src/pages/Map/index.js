@@ -17,8 +17,8 @@ export default class Map extends React.Component {
 	}
 
 	componentWillMount() {
-		this._getLocationAsync();
-	}
+        this._getLocationAsync();
+    }
 
 	_getLocationAsync = async () => {
 		let { status } = await Permissions.askAsync(Permissions.LOCATION);
@@ -29,7 +29,6 @@ export default class Map extends React.Component {
 		}
 		const { fireMarkers } = this.state;
 
-		//let location = this._changeLocation;
 		let loc_orig = await Location.getCurrentPositionAsync({});
 		let location = {
 			latitude: loc_orig.coords.latitude,
@@ -68,11 +67,9 @@ export default class Map extends React.Component {
 						initialRegion={myLocation}
 						region={showLocation}
 						//onRegionChange={ region => this.setState({showLocation: region}) }
-						//onRegionChangeComplete = { this.showCenterButton }
 						onRegionChangeComplete = { region => this.setState( {showLocation: region}) }
-					// onRegionChangeComplete={ region => this.setState({myLocation: region}) }
 					>
-						{myLocation == null ? null :
+                        {myLocation == null ? null :
 							<Marker
 								key={0}
 								coordinate={myLocation}
@@ -91,10 +88,10 @@ export default class Map extends React.Component {
 								<Text>sadyuhuj</Text>
 							</TouchableOpacity>
 						</View>
-
 						: null
 					}
-					<ButtonArea></ButtonArea>
+					
+					<ButtonArea subprops={this.props}></ButtonArea>
 				</View>
 			);
 		}
