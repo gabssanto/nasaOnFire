@@ -20,11 +20,13 @@ const Routes = createAppContainer(
             },
             Report: {
                 screen: Report,
+                navigationOptions: {
+                    header: null,
+                },
             },
             Feed: {
-                screen: Feed,
+                screen: Feed
             }
-            
         },
         {
             cardStyle: {opacity:1},

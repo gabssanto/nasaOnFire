@@ -14,11 +14,12 @@ export default class Map extends React.Component {
 		fireMarkers: [],
 		fireManMarkers: [],
 		errorMessage: null,
-		centerButtonVisibility: true
+		centerButtonVisibility: true,
+		hasToInsertFire: false
 	}
 
 	componentWillMount() {
-        this._getLocationAsync();
+		this._getLocationAsync();
     }
 
 	_getLocationAsync = async () => {
@@ -51,8 +52,17 @@ export default class Map extends React.Component {
 		});
 	}
 
+	insertFire = () => 	{
+		console.log("inserindo fogo");
+		const { fireMarkers, showLocation } = this.state;
+		this.setState({
+			hasToInsertFire: false,
+			fireMarkers: [...fireMarkers, showLocation]
+		});
+	}
+
 	render() {
-		const { myLocation, fireMarkers, errorMessage, centerButtonVisibility, showLocation } = this.state;
+		const { myLocation, fireMarkers, errorMessage, centerButtonVisibility, showLocation, hasToInsertFire } = this.state;
 
 		if (errorMessage) {
 			return (
@@ -74,28 +84,28 @@ export default class Map extends React.Component {
 							<Marker
 								key={0}
 								coordinate={myLocation}
+								image={require("../../../assets/MyLocation.png")}
 							/>
 						}
 						{fireMarkers.map((marker, index) => (
 							<Marker
 								key={index + 1}
 								coordinate={marker}
+								image={require("../../../assets/fireInMap.png")}
 							/>
 						))}
 					</MapView>
 					
 					{centerButtonVisibility ? 
-					<CenterButton>
-						<TouchableOpacity onPress={ this._centerMap }>
-							<Image source={require('../../../assets/relocation.png')}/>
-						</TouchableOpacity>
-					</CenterButton>
-					: null
-					}
-				
-						
+						<CenterButton>
+							<TouchableOpacity onPress={ this._centerMap }>
+								<Image source={require('../../../assets/relocation.png')}/>
+							</TouchableOpacity>
+						</CenterButton>
+						: null
+					}	
 					
-					<ButtonArea subprops={this.props} substate={this.state}></ButtonArea>
+					<ButtonArea subprops={this.props} hasToInsertFire={this.insertFire}></ButtonArea>
 				</View>
 			);
 		}

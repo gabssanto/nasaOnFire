@@ -4,21 +4,34 @@ import { Text, TouchableOpacity, Image } from 'react-native';
 import { Container, Logo, ButtonLeft, ButtonRight } from './styles';
 
 export default class ButtonArea extends Component {
-    state = {
-        count: null,
-        mapProps: null,
-        mapState: null,
-        visible: true
+    constructor() {
+        super();
+        this.state = {
+            count: null,
+            mapProps: null,
+            visible: true
+        };
     }
 
     componentWillMount() {
-        this.setState({ mapProps: this.props.subprops, mapState: this.props.substate })
+        this.setState({ mapProps: this.props.subprops })
+    }
+
+    componentWillUnmount() {
+        return this.props.hasToInsertFire();
     }
 
     Report = () => {
         const { navigation } = this.props.subprops;
         navigation.navigate('Report', {
-            onGoBack: this.changeVisibility
+            //onGoBack: hasSelectedPosition => { hasSelectedPosition ? _hasSelectedPosition : this.changeVisibility }
+            onGoBack: hasSelectedPosition => {
+                if(hasSelectedPosition) {
+                    this._hasSelectedPosition();
+                } else {
+                    this.changeVisibility();
+                }
+            }
         });        
         this.setState({
             visible: false
@@ -28,17 +41,24 @@ export default class ButtonArea extends Component {
     Feed = () => {
         const { navigation } = this.props.subprops;
         navigation.navigate('Feed', {
-            onGoBack: this.changeVisibility
+            onGoBack: this.changeVisibility()
         });
         this.setState({
-            visible: false,
-            mapState: {
-                centerButtonVisibility: false
-            }
+            visible: false
         });
     }
 
-    changeVisibility = () => {
+    _hasSelectedPosition(){
+        this.changeVisibility();
+        /*this.setState({
+            mapState: {
+                hasToInsertFire: true
+            }
+        });*/
+        this.props.hasToInsertFire()
+    }
+
+    changeVisibility(){
         this.setState({
             visible: true
         })
