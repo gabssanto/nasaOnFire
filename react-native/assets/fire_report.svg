@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="78" height="78" viewBox="0 0 78 78">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#f4aa03"/>
+      <stop offset="1" stop-color="#fed600"/>
+    </linearGradient>
+  </defs>
+  <g id="Grupo_24" data-name="Grupo 24" transform="translate(-236 -351)">
+    <g id="Report" transform="translate(236 351)">
+      <path id="Caminho_75" data-name="Caminho 75" class="cls-1" d="M39,0A39,39,0,1,1,0,39,39,39,0,0,1,39,0Z"/>
+      <g id="fire-solid" transform="translate(18.45 12)">
+        <path id="fire-solid-2" data-name="fire-solid" class="cls-2" d="M22.781,2.516a2.536,2.536,0,0,0-4.656-1.375c-13.062,19.093,5.5,19.953,5.5,29.234a6.75,6.75,0,1,1-13.5-.1V21.256a2.532,2.532,0,0,0-4.37-1.74A21.089,21.089,0,0,0,0,33.749a20.25,20.25,0,0,0,40.5,0c0-17.96-17.719-20.355-17.719-31.233Z" transform="translate(0 0.001)"/>
+      </g>
+    </g>
+  </g>
+</svg>

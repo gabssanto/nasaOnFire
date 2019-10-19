@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="116" height="60" viewBox="0 0 116 60">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: rgba(255,255,255,0.9);
+      }
+
+      .cls-2 {
+        fill: none;
+      }
+
+      .cls-3 {
+        fill: #f4aa03;
+      }
+    </style>
+  </defs>
+  <g id="Grupo_25" data-name="Grupo 25" transform="translate(-9 -50)">
+    <g id="Grupo_20" data-name="Grupo 20">
+      <g id="Menu" transform="translate(9 50)">
+        <g id="Menu-2" data-name="Menu">
+          <rect id="Retângulo_10" data-name="Retângulo 10" class="cls-1" width="116" height="60" rx="30"/>
+        </g>
+        <g id="icons_light_menu" data-name="icons/light/menu" transform="translate(68 15)">
+          <rect id="bg" class="cls-2" width="35" height="31"/>
+          <path id="icon" class="cls-3" d="M13.24,20.608a1,1,0,0,1-1-1v-.289a1,1,0,0,1,1-1H29.6a1,1,0,0,1,1,1v.289a1,1,0,0,1-1,1ZM1,11.449a1,1,0,0,1-1-1v-.29a1,1,0,0,1,1-1H29.6a1,1,0,0,1,1,1v.29a1,1,0,0,1-1,1ZM1,2.29a1,1,0,0,1-1-1V1A1,1,0,0,1,1,0H17.36a1,1,0,0,1,1,1v.29a1,1,0,0,1-1,1Z" transform="translate(2 5)"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

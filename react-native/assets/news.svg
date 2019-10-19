@@ -1,0 +1,23 @@
+<svg id="News" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="78" height="78" viewBox="0 0 78 78">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#f4aa03"/>
+      <stop offset="1" stop-color="#fed600"/>
+    </linearGradient>
+  </defs>
+  <g id="Circle_buttons">
+    <path id="Caminho_74" data-name="Caminho 74" class="cls-1" d="M39,0A39,39,0,1,1,0,39,39,39,0,0,1,39,0Z"/>
+  </g>
+  <g id="icons8-invoice" transform="translate(14 16)">
+    <path id="Caminho_73" data-name="Caminho 73" class="cls-2" d="M8.76,3A6.8,6.8,0,0,0,2,9.76V36.8a6.8,6.8,0,0,0,6.76,6.76H40.306a6.8,6.8,0,0,0,6.76-6.76V9.76A6.8,6.8,0,0,0,40.306,3Zm0,4.507H40.306A2.246,2.246,0,0,1,42.559,9.76V36.8a2.246,2.246,0,0,1-2.253,2.253H8.76A2.246,2.246,0,0,1,6.507,36.8V9.76A2.246,2.246,0,0,1,8.76,7.507Zm2.253,4.507V16.52H26.786V12.013Zm22.533,0V16.52h4.507V12.013ZM11.013,21.026v4.507H26.786V21.026Zm22.533,0v4.507h4.507V21.026Zm-6.76,9.013v4.507H38.052V30.039Z"/>
+  </g>
+</svg>
