@@ -5,10 +5,17 @@ import Mapa from "./pages/Map";
 import ButtonArea from './pages/ButtonArea';
 import Report from './pages/Report';
 import Feed from './pages/Feed';
+import StartingPage from './pages/StartingPage';
 
 const Routes = createAppContainer(
     createStackNavigator(
         {
+            StartingPage: {
+                screen: StartingPage,   
+                navigationOptions: {
+                    header: null,
+                }
+            },
             Mapa: {
                 screen: Mapa,
                 navigationOptions: {
