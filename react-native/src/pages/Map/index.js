@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import Constants from 'expo-constants';
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
+import ButtonArea from '../ButtonArea';
 
 export default class Map extends React.Component {
   state = {
@@ -47,12 +48,7 @@ export default class Map extends React.Component {
             />
         ))}
         </MapView>
-        
-        {/* markers.map(marker => (
-          <Marker 
-            coordinate={marker}
-          />
-        )) */}
+        <ButtonArea></ButtonArea>
         
       </View>
     );
@@ -64,10 +60,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
   },
   mapStyle: {
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height,
+    position: "absolute"
   },
 });
