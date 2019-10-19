@@ -10,7 +10,6 @@ export default class StartingPage extends Component {
         navigation.navigate("Mapa");
     }
 
-
     render() {
         return (
             <Container>

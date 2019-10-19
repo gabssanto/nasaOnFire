@@ -23,12 +23,7 @@ export default class ButtonArea extends Component {
 
     Feed = () => {
         const { navigation } = this.props.subprops;
-        navigation.navigate('Feed', {
-            onGoBack: this.changeVisibility()
-        });
-        this.setState({
-            visible: false
-        });
+        navigation.navigate('Feed');
     }
 
     _hasSelectedPosition(){
