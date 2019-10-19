@@ -9,9 +9,11 @@ import ButtonArea from '../ButtonArea';
 export default class Map extends React.Component {
 	state = {
 		myLocation: null,
+		showLocation: null,
 		fireMarkers: [],
 		fireManMarkers: [],
 		errorMessage: null,
+		centerButtonVisibility: true
 	}
 
 	componentWillMount() {
@@ -27,6 +29,7 @@ export default class Map extends React.Component {
 		}
 		const { fireMarkers } = this.state;
 
+		//let location = this._changeLocation;
 		let loc_orig = await Location.getCurrentPositionAsync({});
 		let location = {
 			latitude: loc_orig.coords.latitude,
@@ -34,17 +37,22 @@ export default class Map extends React.Component {
 			latitudeDelta: 0.0522,
 			longitudeDelta: 0.0121
 		}
+		
 		this.setState({
-			myLocation: location
+			myLocation: location,
+			showLocation: location
 		});
 	}
 
-	_centerLocation = () => {
-		this._getLocationAsync();
+	_centerMap = () => {
+		const { myLocation } = this.state;
+		this.setState({
+			showLocation: myLocation
+		});
 	}
 
 	render() {
-		const { myLocation, fireMarkers, errorMessage } = this.state;
+		const { myLocation, fireMarkers, errorMessage, centerButtonVisibility, showLocation } = this.state;
 
 		if (errorMessage) {
 			return (
@@ -57,8 +65,11 @@ export default class Map extends React.Component {
 				<View style={styles.container}>
 					<MapView
 						style={styles.mapStyle}
-						region={myLocation}
-					// onRegionChange={ region => this.setState({myLocation: region}) } mudar p/ caso mude, aparecer botao de centering
+						initialRegion={myLocation}
+						region={showLocation}
+						//onRegionChange={ region => this.setState({showLocation: region}) }
+						//onRegionChangeComplete = { this.showCenterButton }
+						onRegionChangeComplete = { region => this.setState( {showLocation: region}) }
 					// onRegionChangeComplete={ region => this.setState({myLocation: region}) }
 					>
 						{myLocation == null ? null :
@@ -74,12 +85,15 @@ export default class Map extends React.Component {
 							/>
 						))}
 					</MapView>
+					{centerButtonVisibility ?
+						<View style={styles.centerButton}>
+							<TouchableOpacity onPress={ this._centerMap }>
+								<Text>sadyuhuj</Text>
+							</TouchableOpacity>
+						</View>
 
-					<View style={styles.centerButton}>
-						<TouchableOpacity onPress={ this._centerLocation }>
-							<Text>sadyuhuj</Text>
-						</TouchableOpacity>
-					</View>
+						: null
+					}
 					<ButtonArea></ButtonArea>
 				</View>
 			);
@@ -103,5 +117,6 @@ const styles = StyleSheet.create({
 	centerButton: {
 		padding: 30,
 		maxHeight: 100,
+		backgroundColor: "#ff0000"
 	}
 });
