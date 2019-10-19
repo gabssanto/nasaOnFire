@@ -1,16 +1,19 @@
 import { createAppContainer } from 'react-navigation';
-import { createSwitchNavigator } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 
 import Mapa from "./pages/Map";
 import ButtonArea from './pages/ButtonArea';
 import Report from './pages/Report';
-//import Feed from './pages/Feed';
+import Feed from './pages/Feed';
 
 const Routes = createAppContainer(
-    createSwitchNavigator(
+    createStackNavigator(
         {
             Mapa: {
-                screen: Mapa
+                screen: Mapa,
+                navigationOptions: {
+                    header: null,
+                },
             },
             ButtonArea: {
                 screen: ButtonArea,
@@ -18,9 +21,15 @@ const Routes = createAppContainer(
             Report: {
                 screen: Report,
             },
+            Feed: {
+                screen: Feed,
+            }
             
         },
         {
+            cardStyle: {opacity:1},
+            //mode:"modal",
+            transparentCard: true,
             headerBackTitleVisible: false,
         }
     )

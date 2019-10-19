@@ -1,10 +1,11 @@
 import React from 'react';
 import MapView, { Marker } from 'react-native-maps';
-import { StyleSheet, Text, View, Dimensions, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, TouchableOpacity, Image } from 'react-native';
 import Constants from 'expo-constants';
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 import ButtonArea from '../ButtonArea';
+import { CenterButton } from "./styles";
 
 export default class Map extends React.Component {
 	state = {
@@ -82,16 +83,19 @@ export default class Map extends React.Component {
 							/>
 						))}
 					</MapView>
-					{centerButtonVisibility ?
-						<View style={styles.centerButton}>
-							<TouchableOpacity onPress={ this._centerMap }>
-								<Text>sadyuhuj</Text>
-							</TouchableOpacity>
-						</View>
-						: null
-					}
 					
-					<ButtonArea subprops={this.props}></ButtonArea>
+					{centerButtonVisibility ? 
+					<CenterButton>
+						<TouchableOpacity onPress={ this._centerMap }>
+							<Image source={require('../../../assets/relocation.png')}/>
+						</TouchableOpacity>
+					</CenterButton>
+					: null
+					}
+				
+						
+					
+					<ButtonArea subprops={this.props} substate={this.state}></ButtonArea>
 				</View>
 			);
 		}
@@ -114,6 +118,6 @@ const styles = StyleSheet.create({
 	centerButton: {
 		padding: 30,
 		maxHeight: 100,
-		backgroundColor: "#ff0000"
+		right: 0,
 	}
 });
