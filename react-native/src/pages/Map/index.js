@@ -1,73 +1,106 @@
 import React from 'react';
 import MapView, { Marker } from 'react-native-maps';
-import { StyleSheet, Text, View, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, TouchableOpacity } from 'react-native';
 import Constants from 'expo-constants';
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 
 export default class Map extends React.Component {
-  state = {
-    location: null,
-    errorMessage: null,
-    markers: []
-  }
+	state = {
+		myLocation: null,
+		fireMarkers: [],
+		fireManMarkers: [],
+		errorMessage: null,
+	}
 
-  componentWillMount() {
-    this._getLocationAsync();
-  }
+	componentWillMount() {
+		this._getLocationAsync();
+	}
 
-  _getLocationAsync = async () => {
-    let { status } = await Permissions.askAsync(Permissions.LOCATION);
+	_getLocationAsync = async () => {
+		let { status } = await Permissions.askAsync(Permissions.LOCATION);
+		if (status !== 'granted') {
+			this.setState({
+				errorMessage: 'É necessária a permissão de localização'
+			})
+		}
+		const { fireMarkers } = this.state;
 
-    let loc_orig = await Location.getCurrentPositionAsync({});
-    let location = { latitude: loc_orig.coords.latitude,
-                        longitude: loc_orig.coords.longitude,
-                        latitudeDelta: 0.0522,
-                        longitudeDelta: 0.0121 }
-    const { markers } = this.state;
-    this.setState(
-        { 
-            location: location,
-            markers: [...markers, loc_orig.coords]
-        });
-  }
+		let loc_orig = await Location.getCurrentPositionAsync({});
+		let location = {
+			latitude: loc_orig.coords.latitude,
+			longitude: loc_orig.coords.longitude,
+			latitudeDelta: 0.0522,
+			longitudeDelta: 0.0121
+		}
+		this.setState({
+			myLocation: location
+		});
+	}
 
-  render() {
-    const { location, markers } = this.state;
+	_centerLocation = () => {
+		this._getLocationAsync();
+	}
 
-    return (
-      <View style={styles.container}>
-        <MapView style={styles.mapStyle} region={location}>
-        {markers.map((marker, index) => (
-            <Marker
-                key={index}
-                coordinate={marker}
-                title={"Ola mundo"}
-                description={"Tchau mundo"}
-            />
-        ))}
-        </MapView>
-        
-        {/* markers.map(marker => (
-          <Marker 
-            coordinate={marker}
-          />
-        )) */}
-        
-      </View>
-    );
-  }
+	render() {
+		const { myLocation, fireMarkers, errorMessage } = this.state;
+
+		if (errorMessage) {
+			return (
+				<View style={styles.container}>
+					<Text style={styles.paragraph}>errorMessage</Text>
+				</View>
+			);
+		} else {
+			return (
+				<View style={styles.container}>
+					<MapView
+						style={styles.mapStyle}
+						region={myLocation}
+					// onRegionChange={ region => this.setState({myLocation: region}) } mudar p/ caso mude, aparecer botao de centering
+					// onRegionChangeComplete={ region => this.setState({myLocation: region}) }
+					>
+						{myLocation == null ? null :
+							<Marker
+								key={0}
+								coordinate={myLocation}
+							/>
+						}
+						{fireMarkers.map((marker, index) => (
+							<Marker
+								key={index + 1}
+								coordinate={marker}
+							/>
+						))}
+					</MapView>
+
+					<View style={styles.centerButton}>
+						<TouchableOpacity onPress={ this._centerLocation }>
+							<Text>sadyuhuj</Text>
+						</TouchableOpacity>
+					</View>
+				</View>
+			);
+		}
+
+	}
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  mapStyle: {
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height,
-  },
+	container: {
+		flex: 1,
+		backgroundColor: '#fff',
+		alignItems: 'center',
+		justifyContent: 'flex-end',
+	},
+	mapStyle: {
+		width: Dimensions.get('window').width,
+		height: Dimensions.get('window').height,
+		position: "absolute"
+	},
+	centerButton: {
+		padding: 30,
+		maxHeight: 100,
+
+	}
 });
