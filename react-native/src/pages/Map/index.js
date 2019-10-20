@@ -1,6 +1,6 @@
 import React from 'react';
-import MapView, { Marker } from 'react-native-maps';
-import { StyleSheet, Text, View, Dimensions, TouchableOpacity, Image } from 'react-native';
+import MapView, { Marker, Callout } from 'react-native-maps';
+import { StyleSheet, Text, View, Dimensions, TouchableOpacity, TouchableHighlight, Image } from 'react-native';
 import Constants from 'expo-constants';
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
@@ -34,7 +34,6 @@ export default class Map extends React.Component {
 			});
 			return;
 		}
-		const { fireMarkers } = this.state;
 
 		let loc_orig = await Location.getCurrentPositionAsync({});
 		let location = {
@@ -62,7 +61,7 @@ export default class Map extends React.Component {
 		const { fireMarkers, showLocation } = this.state;
 		this.setState({
 			hasToInsertFire: false,
-			fireMarkers: [...fireMarkers, showLocation]
+			fireMarkers: [...fireMarkers, { location: showLocation, title: "Adicionar um título?", descricao: "Adicionar uma descricao aumenta a prioridade do seu chamado" }] 
 		});
 	}
 
@@ -109,9 +108,19 @@ export default class Map extends React.Component {
 						{fireMarkers.map((marker, index) => (
 							<Marker
 								key={index + 1}
-								coordinate={marker}
+								coordinate={marker.location}
 								image={require("../../../assets/fireInMap.png")}
-							/>
+								title={marker.title}
+								description={marker.descricao}
+							>
+								<Callout tooltip>
+									<TouchableHighlight onPress = { () => console.log("oi") } underlayColor="#ddd">
+										<View>
+											<Text>{marker.title}{"\n"}{marker.description}</Text>
+										</View>
+									</TouchableHighlight>
+								</Callout>
+							</Marker>
 						))}
 					</MapView>
 					
