@@ -10,7 +10,7 @@ Our challenge is to create an application that leverages NASA's near-real-time a
 
 ---
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/pImcDxUwUJQ/0.jpg)](https://youtu.be/pImcDxUwUJQ)
+[![IMAGE ALT TEXT HERE](imgs/Firewatch.png)](https://youtu.be/pImcDxUwUJQ)
 
 The app was conceived with the idea of "the action must be as fast as possible". With this in mind, we built our designs with intuitive interfaces for faster information providing.
 
