@@ -23,7 +23,7 @@ export default class StartingPage extends Component {
                         <Image source={require("../../../assets/fireman.png")} />
                     </ButtonLogin>
                 </View>
-            </Container>    
+            </Container>
         );
     }
 };
