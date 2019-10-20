@@ -9,7 +9,9 @@ import { CenterButton, ButtonCloseReport, ViewReport } from "./styles";
 
 import SlideToConfirm from 'react-native-slide-to-confirm';
 
-import firebase from 'firebase';
+import firebase, { firebaseDatabase } from '../../../firebase';
+
+import { FirebaseService } from "../../firebaseService";
 
 export default class Map extends React.Component {
 
@@ -17,7 +19,6 @@ export default class Map extends React.Component {
 		super();
 
 		this.ref = firebase.firestore().collection('fires');
-		this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);
 		this.state = {
 			myLocation: null,
 			showLocation: null,
@@ -28,21 +29,36 @@ export default class Map extends React.Component {
 			hasToInsertFire: false,
 			reportVisibility: false,
 			buttonAreaVisibility: true
-		}	
+		}
 	}
 
-	onCollectionUpdate = (querySnapshot) => {
-		const { fireMarkers } = this.state;
+	componentDidMount () {
+		//FirebaseService.getDataList('fires', dataIn =>
+		//this.setState({ fireMarkers: dataIn }), 10)
+		let newFireMarkers = [];
+		let item = this.ref.get()
+							.then(function(querySnapshot){
+								let i = 0;
+								querySnapshot.forEach(function(doc){
+									console.log(doc.data().location.latitude)
+									const res = doc.data().location;
+									newFireMarkers[i] = {
+										latitude: res.latitude,
+										longitude: res.longitude,
+										latitudeDelta: res.latitudeDelta,
+										longitudeDelta: res.longitudeDelta
+									}
+									i++;
+								});
+							});
+		console.log(item);
 		this.setState({
-			fireMarkers: []
-		});
+			fireMarkers: newFireMarkers
+		})
+	}
 
-		querySnapshot.forEach((locs) =>{
-			const { loc } = locs.data();
-			this.setState({
-				fireMarkers: [...fireMarkers, loc]
-			})
-		});	
+	componentDidUpdate() {
+
 	}
 
 	componentWillMount() {
@@ -90,7 +106,6 @@ export default class Map extends React.Component {
 		this.ref.add({
 			location: showLocation	
 		}).then(() => {
-			this.ref.onSnapshot(this.onCollectionUpdate);
 		})
 		  .catch((error) => {
 			console.log(error);
@@ -138,21 +153,23 @@ export default class Map extends React.Component {
 							/>
 						}
 						{fireMarkers.map((marker, index) => (
+							(marker != null && marker.latitude && marker.longitude) ? (
 							<Marker
 								key={index + 1}
-								coordinate={marker.location}
+								coordinate={marker}
 								image={require("../../../assets/fireInMap.png")}
-								title={marker.title}
-								description={marker.descricao}
+								title={"a"}
+								description={"b"}
 							>
 								<Callout tooltip>
 									<TouchableHighlight onPress = { () => console.log("oi") } underlayColor="#ddd">
 										<View>
-											<Text>{marker.title}{"\n"}{marker.description}</Text>
+											<Text>aaaaaa</Text>
 										</View>
 									</TouchableHighlight>
 								</Callout>
 							</Marker>
+						): null
 						))}
 					</MapView>
 					
