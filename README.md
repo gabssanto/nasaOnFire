@@ -1,11 +1,12 @@
 # Fire Watch
-An app to get people and fireman together, allowing faster firefighting and providing useful preemptive and how-to-proceed information.
+![Logo](imgs/Background.png)
+*An app to get people and fireman together, allowing faster firefighting and providing useful preemptive and how-to-proceed information.*
 
 ---
 
 ## THE CHALLENGE | SPOT THAT FIRE V2.0
 
-Your challenge is to create an application that leverages NASA's near-real-time and archival wildfire datasets along with other tools to support firefighting and fire mitigation efforts. This challenge builds on last year’s challenge of the same name by calling for innovative ideas and apps that focus on how to engage and enable citizens to assist with the entire firefighting and fire mitigation process.
+Our challenge is to create an application that leverages NASA's near-real-time and archival wildfire datasets along with other tools to support firefighting and fire mitigation efforts. This challenge builds on last year’s challenge of the same name by calling for innovative ideas and apps that focus on how to engage and enable citizens to assist with the entire firefighting and fire mitigation process.
 
 ---
 
