@@ -9,17 +9,40 @@ import { CenterButton, ButtonCloseReport, ViewReport } from "./styles";
 
 import SlideToConfirm from 'react-native-slide-to-confirm';
 
+import firebase from 'firebase';
+
 export default class Map extends React.Component {
-	state = {
-		myLocation: null,
-		showLocation: null,
-		fireMarkers: [],
-		fireManMarkers: [],
-		errorMessage: null,
-		centerButtonVisibility: true,
-		hasToInsertFire: false,
-		reportVisibility: false,
-		buttonAreaVisibility: true
+
+	constructor() {
+		super();
+
+		this.ref = firebase.firestore().collection('fires');
+		this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);
+		this.state = {
+			myLocation: null,
+			showLocation: null,
+			fireMarkers: [],
+			fireManMarkers: [],
+			errorMessage: null,
+			centerButtonVisibility: true,
+			hasToInsertFire: false,
+			reportVisibility: false,
+			buttonAreaVisibility: true
+		}	
+	}
+
+	onCollectionUpdate = (querySnapshot) => {
+		const { fireMarkers } = this.state;
+		this.setState({
+			fireMarkers: []
+		});
+
+		querySnapshot.forEach((locs) =>{
+			const { loc } = locs.data();
+			this.setState({
+				fireMarkers: [...fireMarkers, loc]
+			})
+		});	
 	}
 
 	componentWillMount() {
@@ -57,12 +80,21 @@ export default class Map extends React.Component {
 	}
 
 	insertFire = () => 	{
-		console.log("inserindo fogo");
+		/*console.log("inserindo fogo");
 		const { fireMarkers, showLocation } = this.state;
 		this.setState({
 			hasToInsertFire: false,
 			fireMarkers: [...fireMarkers, { location: showLocation, title: "Adicionar um título?", descricao: "Adicionar uma descricao aumenta a prioridade do seu chamado" }] 
-		});
+		});*/
+		const { showLocation } = this.state;
+		this.ref.add({
+			location: showLocation	
+		}).then(() => {
+			this.ref.onSnapshot(this.onCollectionUpdate);
+		})
+		  .catch((error) => {
+			console.log(error);
+		  });
 	}
 
 	toggleReport = () => {
